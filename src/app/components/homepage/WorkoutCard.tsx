@@ -8,7 +8,7 @@ import { PiFireSimpleFill } from 'react-icons/pi';
 const WorkoutCard = ({ workout }: { workout: IWorkout }) => {
     return (
         <div>
-            <Link href={"/"}>
+            <Link href={`/workout/${workout.id}`}>
                 <div className="w-full mx-auto rounded-2xl bg-[#15171D] text-white shadow-lg border border-white/5">
 
                     <div className="relative h-56 w-full overflow-hidden">
