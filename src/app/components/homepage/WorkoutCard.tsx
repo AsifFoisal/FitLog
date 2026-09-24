@@ -20,7 +20,6 @@ const WorkoutCard = ({ workout }: { workout: IWorkout }) => {
                         />
                     </div>
 
-
                     <div className="p-6">
 
                         <div className="flex gap-2">
