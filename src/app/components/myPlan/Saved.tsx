@@ -3,7 +3,7 @@ import Link from 'next/link';
 import React, { useContext } from 'react';
 import PlanCard from './PlanCard';
 
-const Saved = () => {
+const Saved = ({sortBy}: {sortBy: string}) => {
 
     const context = useContext(WorkoutContext);
         if (!context) {
@@ -11,13 +11,24 @@ const Saved = () => {
         }
     
         const { saveWorkout } = context;
+
+    const sortedWorkouts = [...saveWorkout].sort((a, b): number => {
+        if (sortBy === 'duration') {
+            return a.duration - b.duration;
+        } else if (sortBy === 'calories') {
+            return a.caloriesBurned - b.caloriesBurned;
+        } else if (sortBy === 'rating') {
+            return a.rating - b.rating;
+        }
+        return 0;
+    });
     return (
         <div>
             <div className={`${saveWorkout.length > 0 ? "bg-transparent" : "flex min-h-95 w-full flex-col items-center justify-center rounded-2xl bg-[#101216] px-6 py-24.25 text-center "}`}>
 
                 {
                     saveWorkout.length > 0 ? (
-                        saveWorkout.map((workout) => {
+                        sortedWorkouts.map((workout) => {
                             return <PlanCard key={workout.id} workout={workout} />
                         })
                     ) : (<>

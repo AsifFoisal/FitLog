@@ -4,7 +4,7 @@ import Link from 'next/link';
 import React, { useContext } from 'react';
 import PlanCard from './PlanCard';
 
-const Today = () => {
+const Today = ({sortBy}: {sortBy: string}) => {
 
     const context = useContext(WorkoutContext);
     if (!context) {
@@ -13,13 +13,25 @@ const Today = () => {
 
     const { addWorkout } = context;
 
+    const sortedWorkouts = [...addWorkout].sort((a, b): number => {
+        if (sortBy === 'duration') {
+            return a.duration - b.duration;
+        } else if (sortBy === 'calories') {
+            return a.caloriesBurned - b.caloriesBurned;
+        } else if (sortBy === 'rating') {
+            return a.rating - b.rating;
+        }
+        return 0;
+    });
+
+
     return (
         <div>
             <div className={`${addWorkout.length > 0 ? "bg-transparent" : "flex min-h-95 w-full flex-col items-center justify-center rounded-2xl bg-[#101216] px-6 py-24.25 text-center "}`}>
 
                 {
                     addWorkout.length > 0 ? (
-                        addWorkout.map((workout) => {
+                        sortedWorkouts.map((workout) => {
                             return <PlanCard key={workout.id} workout={workout}/>
                         })
                     ) : (<>
