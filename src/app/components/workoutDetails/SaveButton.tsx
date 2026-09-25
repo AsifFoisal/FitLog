@@ -2,6 +2,7 @@
 import { WorkoutContext } from '@/context/workoutContext';
 import { IWorkout } from '@/types/workout.type';
 import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { FaRegBookmark } from 'react-icons/fa6';
 
 const SaveButton = ({ workout }: { workout: IWorkout }) => {
@@ -15,11 +16,12 @@ const SaveButton = ({ workout }: { workout: IWorkout }) => {
         const handleWorkoutSave = () => {
             
             if(isWorkoutSaved){
-                alert('Workout already Saved');
+                toast.error('Already in your saved list');
                 return;
             }
             
             setSaveWorkout([...saveWorkout, workout]);
+            toast.success("Saved for later");
         }
     return (
         <div>

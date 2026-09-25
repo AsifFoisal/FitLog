@@ -1,12 +1,39 @@
+import { WorkoutContext } from '@/context/workoutContext';
 import { IWorkout } from '@/types/workout.type';
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
+import React, { useContext } from 'react';
+import { FaCheck } from 'react-icons/fa6';
 import { GoClock } from 'react-icons/go';
 import { MdStarBorder } from 'react-icons/md';
 import { PiFireSimpleFill } from 'react-icons/pi';
+import { RxCross2 } from 'react-icons/rx';
 
 const PlanCard = ({workout}: {workout: IWorkout}) => {
+
+    const context = useContext(WorkoutContext);
+    if(!context){
+        throw new Error('WorkoutContext is not available');
+    }
+
+    const {activeTab, addWorkout, saveWorkout, setAddWorkout, setSaveWorkout} = context;
+
+    const handleRemoveWorkout = () => {
+        if(activeTab === 'today'){
+            const updatedAddWorkout = addWorkout.filter((w) => w.id !== workout.id);
+            setAddWorkout(updatedAddWorkout);
+        }
+        else {
+            const updatedSaveWorkout = saveWorkout.filter((w) => w.id !== workout.id);
+            setSaveWorkout(updatedSaveWorkout);
+        }
+    }
+
+    const handleMarkAsDone = () => {
+        const updatedAddWorkout = addWorkout.filter((w) => w.id !== workout.id);
+        setAddWorkout(updatedAddWorkout);
+    }
+
     return (
         <div className="mb-4">
             <div className="flex w-full items-center justify-between gap-4 rounded-2xl border border-white/5 bg-[#101216] p-4 text-white shadow-xl">
@@ -22,7 +49,6 @@ const PlanCard = ({workout}: {workout: IWorkout}) => {
                         />
                     </div>
 
-                    
                     <div className="flex flex-col justify-center gap-1">
                         <h3 className="font-oswald text-lg font-bold uppercase tracking-wider text-white">
                             {workout.name}
@@ -64,18 +90,21 @@ const PlanCard = ({workout}: {workout: IWorkout}) => {
                     <button
                         type="button"
                         className="flex items-center gap-1.5 rounded-full bg-[#C2F10D] px-5 py-2 text-xs font-bold text-black transition-all hover:bg-[#b0dc0b] hover:scale-105"
+                        onClick={handleMarkAsDone}
                     >
                         
-                        <span>Mark as Done</span>
+                        <span className='flex items-center gap-2'><FaCheck/>Mark as Done</span>
                     </button>
 
                     
                     <button
                         type="button"
-                        className="p-1 text-[#717886] transition-colors hover:text-white"
+                        onClick={handleRemoveWorkout}
+                        className="p-1 text-[#717886] transition-colors hover:text-white cursor-pointer"
                         aria-label="Remove exercise"
                     >
-                        
+
+                        <RxCross2 />
                     </button>
                 </div>
             </div>

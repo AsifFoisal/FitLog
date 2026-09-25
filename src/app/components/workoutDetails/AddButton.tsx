@@ -2,6 +2,7 @@
 import { WorkoutContext } from '@/context/workoutContext';
 import { IWorkout } from '@/types/workout.type';
 import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { LuCalendarPlus2 } from 'react-icons/lu';
 
 const AddButton = ({ workout }: { workout: IWorkout }) => {
@@ -15,11 +16,12 @@ const AddButton = ({ workout }: { workout: IWorkout }) => {
     const handleWorkoutAdd = () => {
         
         if(isWorkoutAdded){
-            alert('Workout already added to today\'s plan!');
+            toast.error('Already in your plan');
             return;
         }
         
         setAddWorkout([...addWorkout, workout]);
+        toast.success("Added to today's plan")
     }
 
     console.log(addWorkout);
