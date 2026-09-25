@@ -48,7 +48,7 @@ const Tabs = () => {
                     value={sortBy}
                     onChange={(e) => setSortBy(e.target.value)}
                         className="select w-32 rounded-xl border-[#232732] bg-[#13161D] text-white"
-                        defaultValue="duration"
+                       
                     >
                         <option value="duration">Duration</option>
                         <option value="calories">Calories</option>

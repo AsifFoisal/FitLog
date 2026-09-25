@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { FaDumbbell } from 'react-icons/fa6';
 
 const Hero = () => {
     return (
@@ -11,7 +12,7 @@ const Hero = () => {
                     <p className='text-[#9CA3AF] text-[16px] w-lg'>FitLog is a dark, no-nonsense gym companion: pick a lift, lock it
                         into today&apos;s plan, and watch the weeks work add up.</p>
 
-                    <a href="#library" className='bg-[#C2F800] px-6 py-3 text-[#000000] text-[12px] font-bold rounded-md cursor-pointer'>BROWSE WORKOUTS</a>
+                    <a href="#library" className='bg-[#C2F800] px-6 py-3 text-[#000000] text-[12px] font-bold rounded-md cursor-pointer inline-flex items-center gap-2'><FaDumbbell size={16} className='rotate-135'/>BROWSE WORKOUTS</a>
 
                 </div>
                 <div>

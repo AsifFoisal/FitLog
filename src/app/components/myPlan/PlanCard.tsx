@@ -3,6 +3,7 @@ import { IWorkout } from '@/types/workout.type';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { FaCheck } from 'react-icons/fa6';
 import { GoClock } from 'react-icons/go';
 import { MdStarBorder } from 'react-icons/md';
@@ -22,16 +23,19 @@ const PlanCard = ({workout}: {workout: IWorkout}) => {
         if(activeTab === 'today'){
             const updatedAddWorkout = addWorkout.filter((w) => w.id !== workout.id);
             setAddWorkout(updatedAddWorkout);
+            toast.success('Removed from today\'s plan');
         }
         else {
             const updatedSaveWorkout = saveWorkout.filter((w) => w.id !== workout.id);
             setSaveWorkout(updatedSaveWorkout);
+            toast.success("Removed from saved");
         }
     }
 
     const handleMarkAsDone = () => {
         const updatedAddWorkout = addWorkout.filter((w) => w.id !== workout.id);
         setAddWorkout(updatedAddWorkout);
+        toast.success("Workout logged — nice work")
     }
 
     return (
@@ -89,7 +93,7 @@ const PlanCard = ({workout}: {workout: IWorkout}) => {
                     
                     <button
                         type="button"
-                        className="flex items-center gap-1.5 rounded-full bg-[#C2F10D] px-5 py-2 text-xs font-bold text-black transition-all hover:bg-[#b0dc0b] hover:scale-105"
+                        className={`${activeTab === "saved" ? "hidden": "block"} flex items-center gap-1.5 cursor-pointer rounded-full bg-[#C2F10D] px-5 py-2 text-xs font-bold text-black transition-all hover:bg-[#b0dc0b] hover:scale-105`}
                         onClick={handleMarkAsDone}
                     >
                         
