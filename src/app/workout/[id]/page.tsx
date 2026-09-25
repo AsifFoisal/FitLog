@@ -1,8 +1,8 @@
+import AddButton from '@/app/components/workoutDetails/AddButton';
+import SaveButton from '@/app/components/workoutDetails/SaveButton';
 import { IWorkout } from '@/types/workout.type';
 import Image from 'next/image';
 import React from 'react';
-import { FaRegBookmark } from 'react-icons/fa';
-import { LuCalendarPlus2 } from 'react-icons/lu';
 
 
 interface IWorkpoutDetailsPageProps {
@@ -53,7 +53,7 @@ const WorkoutDetailsPage = async({params} : IWorkpoutDetailsPageProps) => {
                                 <span className="rounded-full bg-[#CCFF00] px-3 py-1 text-xs font-semibold text-black">
                                     {workout.muscleGroups[0]}
                                 </span>
-                                <span className="rounded-full bg-[#CCFF00] px-3 py-1 text-xs font-semibold text-black">
+                                <span className={` ${workout.muscleGroups[1] ? 'block' : 'hidden'} rounded-full bg-[#CCFF00] px-3 py-1 text-xs font-semibold text-black`}>
                                     {workout.muscleGroups[1]}
                                 </span>
                             </div>
@@ -111,15 +111,8 @@ const WorkoutDetailsPage = async({params} : IWorkpoutDetailsPageProps) => {
 
                         
                         <div className="mt-8 flex gap-3">
-                            <button className="flex items-center gap-2 rounded-xl bg-[#CCFF00] px-6 py-3 text-xs font-semibold text-black transition-opacity hover:opacity-90">
-                                <LuCalendarPlus2 size={16}/>
-                                <span>Add to today&apos;s plan</span>
-                            </button>
-
-                            <button className="flex items-center gap-2 rounded-xl px-6 py-3 text-xs font-semibold text-zinc-300 transition-colors hover:bg-white/10 hover:text-white border border-[#374151]">
-                                <FaRegBookmark size={16} />
-                                <span>Save for later</span>
-                            </button>
+                            <AddButton workout={workout} />
+                            <SaveButton workout={workout} />
                         </div>
                     </div>
                 </div>

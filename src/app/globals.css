@@ -5,3 +5,7 @@
     --font-oswald: "Oswald",sans-serif;
     --font-inter: "Inter",sans-serif;
 }
+
+html{
+    scroll-behavior: smooth;
+}

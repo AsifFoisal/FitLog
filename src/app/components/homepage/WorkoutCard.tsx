@@ -9,14 +9,14 @@ const WorkoutCard = ({ workout }: { workout: IWorkout }) => {
     return (
         <div>
             <Link href={`/workout/${workout.id}`}>
-                <div className="w-full mx-auto rounded-2xl bg-[#15171D] text-white shadow-lg border border-white/5">
+                <div className="w-full mx-auto rounded-2xl bg-[#15171D] text-white shadow-lg border border-white/5 hover:border-[#C2F800]">
 
                     <div className="relative h-56 w-full overflow-hidden">
                         <Image
                             src={workout.image}
                             alt={workout.name}
                             fill
-                            className="object-cover object-center rounded-2xl"
+                            className="object-cover object-center rounded-t-2xl"
                         />
                     </div>
 
@@ -26,7 +26,7 @@ const WorkoutCard = ({ workout }: { workout: IWorkout }) => {
                             <span className="rounded-full bg-[#C2F800] px-2.5 py-1 text-xs font-bold tracking-[0.55px] text-black uppercase">
                                 {workout.muscleGroups[0]}
                             </span>
-                            <span className="rounded-full bg-[#C2F800] px-2.5 py-1 text-xs font-bold tracking-wider text-black uppercase">
+                            <span className={` ${workout.muscleGroups[1] ? 'block' : 'hidden'} rounded-full bg-[#C2F800] px-2.5 py-1 text-xs font-bold tracking-wider text-black uppercase`}>
                                 {workout.muscleGroups[1]}
                             </span>
                         </div>

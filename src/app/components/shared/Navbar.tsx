@@ -1,8 +1,10 @@
 "use client"
+import { WorkoutContext } from '@/context/workoutContext';
 import { Oswald } from 'next/font/google';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useContext } from 'react';
 
 const oswald = Oswald({
     subsets: ["latin"],
@@ -13,8 +15,15 @@ const Navbar = () => {
 
     const pathName = usePathname();
 
+    const context = useContext(WorkoutContext);
+    if(!context){
+        throw new Error('WorkoutContext is not available');
+    }
+
+    const { addWorkout, saveWorkout } = context;
+
     return (
-        <div className="border-b border-white/6 max-w-7xl mx-auto w-full">
+        <div className="border-b border-white/6 max-w-7xl mx-auto w-full sticky top-0 z-50 bg-[#000000]">
             <nav className='flex justify-between items-center h-17 '>
                 <div>
                     <Link className='flex gap-2.5 items-center' href={"/"}>
@@ -35,8 +44,8 @@ const Navbar = () => {
                 </div>
 
                 <div className='flex items-center gap-6 '>
-                    <Link href={"/my-plan"} className='flex items-center gap-2 text-[14px] font-medium text-zinc-200 transition-colors hover:text-white'>Plan <span className="flex h-5.5 w-5.5 items-center justify-center rounded-full bg-[#CCFF00] text-xs font-bold text-black">{0}</span></Link>
-                    <Link href={"/my-plan"} className='flex items-center gap-2 text-[14px] font-medium text-zinc-200 transition-colors hover:text-white'>Saved <span className='flex h-5.5 w-5.5 items-center justify-center rounded-full bg-white/6 text-xs font-semibold text-zinc-400 ring-1 ring-inset ring-white/10'>{0}</span></Link>
+                    <Link href={"/my-plan"} className='flex items-center gap-2 text-[14px] font-medium text-zinc-200 transition-colors hover:text-white'>Plan <span className="flex h-5.5 w-5.5 items-center justify-center rounded-full bg-[#CCFF00] text-xs font-bold text-black">{addWorkout.length}</span></Link>
+                    <Link href={"/my-plan"} className='flex items-center gap-2 text-[14px] font-medium text-zinc-200 transition-colors hover:text-white'>Saved <span className='flex h-5.5 w-5.5 items-center justify-center rounded-full bg-white/6 text-xs font-semibold text-zinc-400 ring-1 ring-inset ring-white/10'>{saveWorkout.length}</span></Link>
                 </div>
             </nav>
         </div>

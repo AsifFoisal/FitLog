@@ -3,14 +3,14 @@ import WorkoutCard from "./WorkoutCard";
 
 const getWorkout = async () => {
     const res = await fetch("https://api.abcz.workers.dev/api/fitlog");
-    const data = res.json();
+    const data = await res.json();
     return data;
 }
 const Library = async () => {
 
     const workoutData = await getWorkout();
     return (
-        <div className="max-w-7xl mx-auto mb-16">
+        <div id="library" className="max-w-7xl mx-auto mb-16">
             <div className="mt-30">
                 <h1 className="text-[30px] font-oswald font-bold tracking-[-0.75px]">THE LIBRARY</h1>
                 <p className="text-[#9CA3AF] text-[14px]">Twelve lifts covering every major muscle group.</p>

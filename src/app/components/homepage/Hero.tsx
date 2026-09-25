@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import React from 'react';
 
 const Hero = () => {
     return (
@@ -11,10 +10,12 @@ const Hero = () => {
                         EVERY SET.</h1>
                     <p className='text-[#9CA3AF] text-[16px] w-lg'>FitLog is a dark, no-nonsense gym companion: pick a lift, lock it
                         into today&apos;s plan, and watch the weeks work add up.</p>
-                    <button className='bg-[#C2F800] px-6 py-3 text-[#000000] text-[12px] font-bold rounded-md'>BROWSE WORKOUTS</button>
+
+                    <a href="#library" className='bg-[#C2F800] px-6 py-3 text-[#000000] text-[12px] font-bold rounded-md cursor-pointer'>BROWSE WORKOUTS</a>
+
                 </div>
                 <div>
-                    <Image width={400} height={400} alt='' src={"/banner.png"}/>
+                    <Image width={400} height={400} alt='' src={"/banner.png"} />
                 </div>
             </div>
         </div>
