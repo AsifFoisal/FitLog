@@ -23,8 +23,8 @@ const Navbar = () => {
     const { addWorkout, saveWorkout } = context;
 
     return (
-        <div className="border-b border-white/6 max-w-7xl mx-auto w-full sticky top-0 z-50 bg-[#000000]">
-            <nav className='flex justify-between items-center h-17 '>
+        <div className="border-b border-white/6 sticky top-0 z-50 bg-[#000000]">
+            <nav className='flex justify-between max-w-7xl mx-auto items-center h-17 '>
                 <div>
                     <Link className='flex gap-2.5 items-center' href={"/"}>
                         <Image width={28} height={28} alt='' src={"/logo.png"} />
