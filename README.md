@@ -1,5 +1,5 @@
 # FitLog
-## FitLog is a modern fitness and workout tracking web application designed to help users organize, track, and manage their fitness activities. Users can explore workouts, create and manage personalized workout plans
+  FitLog is a modern fitness and workout tracking web application designed to help users organize, track, and manage their fitness activities. Users can explore workouts, create and manage personalized workout plans
 
 # Technologies Used
 - Next.js
