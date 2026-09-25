@@ -13,6 +13,7 @@ const Tabs = () => {
     }
     const { activeTab, setActiveTab } = context;
     const [sortBy, setSortBy] = useState('duration');
+    const { isHydrated } = context;
 
     return (
         <div className="mt-8">
@@ -59,8 +60,16 @@ const Tabs = () => {
             </div>
 
             <div className="mt-6 w-full">
-                {activeTab === "today" && <Today sortBy={sortBy} />}
-                {activeTab === "saved" && <Saved sortBy={sortBy} />}
+                {!isHydrated ? (
+                    <div className="flex justify-center py-10">
+                        <p className="text-xl text-white font-oswald">Loading Workouts...</p>
+                    </div>
+                ) : (
+                    <>
+                        {activeTab === "today" && <Today sortBy={sortBy} />}
+                        {activeTab === "saved" && <Saved sortBy={sortBy} />}
+                    </>
+                )}
             </div>
         </div>
     );

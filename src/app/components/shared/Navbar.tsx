@@ -20,7 +20,7 @@ const Navbar = () => {
         throw new Error('WorkoutContext is not available');
     }
 
-    const { addWorkout, saveWorkout } = context;
+    const { addWorkout, saveWorkout, isHydrated } = context;
 
     return (
         <div className="border-b border-white/6 sticky top-0 z-50 bg-[#000000]">
@@ -70,7 +70,7 @@ const Navbar = () => {
                     >
                         <span className="">Plan</span>
                         <span className="flex h-5 w-5 sm:h-5.5 sm:w-5.5 items-center justify-center rounded-full bg-[#CCFF00] text-[10px] sm:text-xs font-bold text-black">
-                            {addWorkout.length}
+                            {isHydrated ? addWorkout.length : 0}
                         </span>
                     </Link>
 
@@ -80,7 +80,7 @@ const Navbar = () => {
                     >
                         <span>Saved</span>
                         <span className="flex h-5 w-5 sm:h-5.5 sm:w-5.5 items-center justify-center rounded-full bg-white/6 text-[10px] sm:text-xs font-semibold text-zinc-400 ring-1 ring-inset ring-white/10">
-                            {saveWorkout.length}
+                            {isHydrated ? saveWorkout.length : 0}
                         </span>
                     </Link>
                 </div>
