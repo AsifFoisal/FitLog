@@ -11,7 +11,7 @@ const Tabs = () => {
     if (!context) {
         throw new Error('WorkoutContext is not available');
     }
-    const { activeTab, setActiveTab} = context;
+    const { activeTab, setActiveTab } = context;
     const [sortBy, setSortBy] = useState('duration');
 
     return (
@@ -45,10 +45,10 @@ const Tabs = () => {
                     </span>
 
                     <select
-                    value={sortBy}
-                    onChange={(e) => setSortBy(e.target.value)}
+                        value={sortBy}
+                        onChange={(e) => setSortBy(e.target.value)}
                         className="select w-32 rounded-xl border-[#232732] bg-[#13161D] text-white"
-                       
+
                     >
                         <option value="duration">Duration</option>
                         <option value="calories">Calories</option>
@@ -59,8 +59,8 @@ const Tabs = () => {
             </div>
 
             <div className="mt-6 w-full">
-                {activeTab === "today" && <Today sortBy = {sortBy}/>}
-                {activeTab === "saved" && <Saved sortBy = {sortBy}/>}
+                {activeTab === "today" && <Today sortBy={sortBy} />}
+                {activeTab === "saved" && <Saved sortBy={sortBy} />}
             </div>
         </div>
     );

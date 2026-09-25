@@ -9,6 +9,8 @@ interface IWorkoutContext {
     setSaveWorkout: React.Dispatch<React.SetStateAction<IWorkout[]>>,
     activeTab: 'today' | 'saved',
     setActiveTab: React.Dispatch<React.SetStateAction<'today' | 'saved'>>,
+    loading: boolean;
+    setLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const WorkoutContext = createContext<IWorkoutContext | null>(null);
@@ -18,6 +20,7 @@ const WorkoutProvider = ({children}: {children: ReactNode}) => {
     const [addWorkout, setAddWorkout] = useState<IWorkout[]>([]);
     const [saveWorkout, setSaveWorkout] = useState<IWorkout[]>([]);
     const [activeTab, setActiveTab] = useState<'today' | 'saved'>('today');
+    const [loading, setLoading] = useState(true);
 
     const sharedData = {
         addWorkout,
@@ -25,7 +28,9 @@ const WorkoutProvider = ({children}: {children: ReactNode}) => {
         saveWorkout,
         setSaveWorkout,
         activeTab, 
-        setActiveTab
+        setActiveTab,
+        loading,
+        setLoading
     }
 
     return (
