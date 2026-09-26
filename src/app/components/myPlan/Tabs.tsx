@@ -13,7 +13,7 @@ const Tabs = () => {
     }
     const { activeTab, setActiveTab } = context;
     const [sortBy, setSortBy] = useState('duration');
-    const { isHydrated } = context;
+    const { isLoaded } = context;
 
     return (
         <div className="mt-8">
@@ -60,7 +60,7 @@ const Tabs = () => {
             </div>
 
             <div className="mt-6 w-full">
-                {!isHydrated ? (
+                {!isLoaded ? (
                     <div className="flex justify-center py-10">
                         <p className="text-xl text-white font-oswald">Loading Workouts...</p>
                     </div>

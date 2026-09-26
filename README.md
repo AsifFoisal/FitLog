@@ -12,7 +12,7 @@
 
 # 5 Key Features
 1. Users can browse, view details and manage different workouts.
-2. Users can add workouts to their persolan plan.
+2. Users can add workouts to their personal plan.
 3. Users can save workout for later exploration.
 4. The application provides a clean, modern, and responsive interface that works smoothly across desktop, tablet, and mobile devices.
 5. The application uses localStorage to persist user data across sessions. 
